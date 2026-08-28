@@ -1,7 +1,7 @@
 # TUNGAR-Guard
 
-Streamlit tabanlı tek sayfalık bir uygulama. Sohbet ve
-video analiz aynı akışta; sol tarafta chatbot tarzı geçmiş sohbet listesi,
+Streamlit tabanlı, React kullanmayan tek sayfalık bir uygulama. Sohbet ve
+video analiz aynı akışta; sol tarafta ChatGPT tarzı geçmiş sohbet listesi,
 üstte KPI özeti. Video analiz **TEKNOFEST EVREN çıkarım servisi**
 (`evren-llmapi.ssyz.org.tr`) ile çalışır, otomasyon/KPI tarafı gerçek
 SQLite ile.
@@ -12,7 +12,7 @@ SQLite ile.
 pip install -r requirements.txt
 ```
 
-`yolov8n.pt` proje kökünde olmalı (paketle birlikte geliyor).
+`tungar_guard_yolov8n.pt` proje kökünde olmalı (paketle birlikte geliyor).
 
 ## EVREN API anahtarınızı girin
 

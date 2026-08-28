@@ -33,7 +33,7 @@ if not EVREN_API_KEY and API_MODE == "evren":
 MOCK_MODE = (API_MODE == "mock")
 
 DB_PATH = os.environ.get("TUNGAR_DB_PATH", "tungar_guard.db")
-YOLO_MODEL_PATH = os.environ.get("TUNGAR_YOLO_PATH", "yolov8n.pt")
+YOLO_MODEL_PATH = os.environ.get("TUNGAR_YOLO_PATH", "tungar_guard_yolov8n.pt")
 
 YOLO_CLASS_NAMES = [
     'person', 'hardhat', 'no_vest', 'no_gloves', 'boots', 'vest', 'no_hardhat',

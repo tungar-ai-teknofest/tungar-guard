@@ -46,45 +46,50 @@ incident_type alanını düzgün, doğru yazımlı Türkçe kelimelerle yaz (ör
 "forklift devrilmesi", "yangın") — kısaltma, slug ya da alt çizgili teknik kod
 kullanma, birbirine benzeyen kelimeleri (örn. "kaçak" / "kazak") karıştırma.
 
-GORSEL AYRIM (onemli, yanlis siniflandirma yapma):
-- "Patlama" SADECE gorunur alev, parlama/flas veya ani bir enerji purlemesi
-  varsa kullan. Bir raf/palet cokmesinden kalkan TOZ BULUTU patlama DEGILDIR —
-  bunu "raf cokmesi" / "malzeme dokulmesi" gibi dogru adlandir, toz bulutunu
-  patlamayla karistirma.
-- "Yangin"/"duman" icin de gercek alev veya duman rengi/dokusu gormelisin,
+GÖRSEL AYRIM (önemli, yanlış sınıflandırma yapma):
+- "Patlama" SADECE görünür alev, parlama/flaş veya ani bir enerji pürlemesi
+  varsa kullan. Bir raf/palet çöküşünden kalkan TOZ BULUTU patlama DEĞİLDİR —
+  bunu "raf çökmesi" / "malzeme dökülmesi" gibi doğru adlandır, toz bulutunu
+  patlamayla karıştırma.
+- "Yangın"/"duman" için de gerçek alev veya duman rengi/dokusu görmelisin,
   sadece toz/pislik bulutunu duman sanma.
 
-BOS OLAYLAR LISTESI (cok onemli): Gordugun goruntu tamamen rutin/uyumlu ise
-(PPE eksiksiz takilmis, tehlike yok, anormal bir sey olmuyor) "olaylar" alanini
-BOS LISTE ([]) olarak dondur ve risk'i "Dusuk" yap. Sirf "kontrol ettim" demek
-icin uydurma bir olay UYDURMA — bir isci baretini/yelegini duzgun takmis,
-normal calisiyorsa bu bir "olay" DEGILDIR, raporlanacak bir sey yoktur.
-Sadece gercekten dikkat cekici (ihlal, tehlike, anomali) bir sey gordugunde
-olaylar listesine ekle.
+BOŞ OLAYLAR LİSTESİ (çok önemli): Gördüğün görüntü tamamen rutin/uyumlu ise
+(PPE eksiksiz takılmış, tehlike yok, anormal bir şey olmuyor) "olaylar" alanını
+BOŞ LİSTE ([]) olarak döndür ve risk'i "Dusuk" yap. Sırf "kontrol ettim" demek
+için uydurma bir olay UYDURMA — bir işçi baretini/yeleğini düzgün takmış,
+normal çalışıyorsa bu bir "olay" DEĞİLDİR, raporlanacak bir şey yoktur.
+Sadece gerçekten dikkat çekici (ihlal, tehlike, anomali) bir şey gördüğünde
+olaylar listesine ekle. Olaylar boş olsa bile genel_ozet alanında GERÇEKTEN
+GÖRDÜĞÜNÜ tarif et (örn. "İşçi PPE'sini eksiksiz takmış, normal çalışıyor,
+dikkat çekici bir durum yok.") — asla jenerik "kontrol edildi" gibi boş bir
+cümleyle geçiştirme, ne gördüğünü somut olarak anlat.
 
-KISI ETKILENIYORSA ETIKETTE BELIRT: Dusen/devrilen bir nesne (panel, palet,
-raf, yuk vb.) bir KISIYE carpiyor, kisiyi sikistiriyor veya altinda birakiyorsa,
-incident_type SADECE nesneyi degil, kisinin durumunu da yansitmali —
-orn. "malzeme dusmesi" yerine "kisi sikismasi", "malzeme altinda kalma" veya
-"ezilme riski" gibi insan etkisini one cikaran bir ifade kullan. Sadece nesne
-odakli, kisiyi gormezden gelen bir etiket YAZMA.
+KİŞİ ETKİLENİYORSA ETİKETTE BELİRT: Düşen/devrilen bir nesne (panel, palet,
+raf, yük vb.) bir KİŞİYE çarpıyor veya altında bırakıyorsa, incident_type
+SADECE nesneyi değil, kişinin durumunu da yansıtmalı — örn. "malzeme düşmesi"
+yerine "kişinin malzeme altında kalması", "ezilme riski" veya "kişi yaralanma
+riski" gibi net bir ifade kullan. "sıkışma"/"sıkışması" kelimesini KULLANMA
+(gündelik Türkçede farklı/uygunsuz bir çağrışımı var) — bunun yerine "altında
+kalma", "ezilme" veya "çarpma" gibi net ve profesyonel kelimeler tercih et.
+Sadece nesne odaklı, kişiyi görmezden gelen bir etiket de YAZMA.
 
-TEK OLAYI BOLME: Ayni surekli olay (orn. bir patlama, bir devrilme) klip
-icinde birden fazla anda gorunse bile TEK bir "olaylar" girdisi olarak
-raporla — event_start/event_peak/event_end alanlarini olayin baslangic,
-en yogun ani ve bitisini gostermek icin kullan. Ayni olay icin "olaylar"
-listesine ikinci bir girdi EKLEME (orn. "patlama" once 00:02'de sonra
-00:04'te ayri ayri raporlanmaz — tek girdi: event_start=00:02,
-event_peak=00:03, event_end=00:04). Sadece GERCEKTEN farkli/bagimsiz
+TEK OLAYI BÖLME: Aynı süregelen olay (örn. bir patlama, bir devrilme) klip
+içinde birden fazla anda görünse bile TEK bir "olaylar" girdisi olarak
+raporla — event_start/event_peak/event_end alanlarını olayın başlangıç,
+en yoğun anı ve bitişini göstermek için kullan. Aynı olay için "olaylar"
+listesine ikinci bir girdi EKLEME (örn. "patlama" önce 00:02'de sonra
+00:04'te ayrı ayrı raporlanmaz — tek girdi: event_start=00:02,
+event_peak=00:03, event_end=00:04). Sadece GERÇEKTEN farklı/bağımsız
 olaylar varsa birden fazla girdi kullan.
 
-GUVEN ALANI KALIBRASYONU (onemli — sabit bir sayi yazma, her olay icin gercekten
-degerlendir):
+GÜVEN ALANI KALİBRASYONU (önemli — sabit bir sayı yazma, her olay için gerçekten
+değerlendir):
 - Görüntü net, olay tipi belirgin, şüphe yok: 0.85-0.98 arası kullan.
 - Görüntü kısmen belirsiz (uzak, karanlık, kısmen kapalı, yorumlanabilir): 0.5-0.75.
 - Çok belirsiz, tahmin niteliğinde: 0.3-0.5.
-Aynı klip icinde bile farkli olaylarin guven degeri farkli olabilir. Her olay icin
-ayri ayri düşün — hepsine aynı sayıyı yazma.
+Aynı klip içinde bile farklı olayların güven değeri farklı olabilir. Her olay için
+ayrı ayrı düşün — hepsine aynı sayıyı yazma.
 
 SEVERITY_LEVEL KALİBRASYONU (önemli, aşırı değerlendirme yapma):
 - Düşük: rutin, ihlal yok, sadece gözlem.

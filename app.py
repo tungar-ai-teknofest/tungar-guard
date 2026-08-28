@@ -369,6 +369,7 @@ def process_video(uploaded_file, session_id: str):
     all_events_for_report = []
     inference_times = []
     collected_for_batch = []
+    observed_summaries = []
 
     for trig in triggers:
         t0 = time.time()
@@ -378,8 +379,10 @@ def process_video(uploaded_file, session_id: str):
         inference_times.append(elapsed_ms / 1000)
 
         schema_ok = "başarısız oldu" not in result.genel_ozet
-        db.save_kpi(None, "inference_time_ms", elapsed_ms, metadata={"run_id": run_id})
-        db.save_kpi(None, "schema_valid", 1.0 if schema_ok else 0.0, metadata={"run_id": run_id})
+        db.save_kpi(run_id, "inference_time_ms", elapsed_ms)
+        db.save_kpi(run_id, "schema_valid", 1.0 if schema_ok else 0.0)
+        if schema_ok:
+            observed_summaries.append(result.genel_ozet)
 
         if not schema_ok:
             continue
@@ -411,11 +414,11 @@ def process_video(uploaded_file, session_id: str):
     avg_inference_ms = (sum(inference_times) / len(inference_times)) * 1000 if inference_times else 0
     kpi_engine.db.save_kpi(run_id, "avg_inference_time_ms", avg_inference_ms)
     if scan_stats.get("scan_fps"):
-        db.save_kpi(None, "yolo_scan_fps", scan_stats["scan_fps"])
+        db.save_kpi(run_id, "yolo_scan_fps", scan_stats["scan_fps"])
     if scan_stats.get("peak_vram_mb"):
-        db.save_kpi(None, "yolo_peak_vram_mb", scan_stats["peak_vram_mb"])
+        db.save_kpi(run_id, "yolo_peak_vram_mb", scan_stats["peak_vram_mb"])
 
-    report = build_full_report(uploaded_file.name, all_events_for_report)
+    report = build_full_report(uploaded_file.name, all_events_for_report, observed_summaries)
     report["_run_id"] = run_id
     db.add_message(session_id, "assistant",
                     f"📋 **Video Raporu** — {report['genel_ozet']}",

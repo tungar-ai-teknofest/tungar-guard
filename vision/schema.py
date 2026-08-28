@@ -70,12 +70,18 @@ def try_parse(raw_text: str) -> VisionAnalysisResult | None:
         return None
 
 
-def build_full_report(video_name: str, events: List[dict]) -> dict:
+def build_full_report(video_name: str, events: List[dict], observed_summaries: List[str] = None) -> dict:
     """Şartname madde 3/5'teki tek video raporu formatı: zaman damgalı olay
     listesi + genel özet + risk değerlendirmesi + aksiyon önerileri, JSON."""
     if not events:
+        real_summary = None
+        for s in (observed_summaries or []):
+            if s and "başarısız oldu" not in s:
+                real_summary = s
+                break
         return {
-            "video": video_name, "olaylar": [], "genel_ozet": "Dikkate değer bir olay tespit edilmedi.",
+            "video": video_name, "olaylar": [],
+            "genel_ozet": real_summary or "Dikkate değer bir olay tespit edilmedi.",
             "risk_degerlendirmesi": "Düşük", "aksiyon_onerileri": [],
         }
 
