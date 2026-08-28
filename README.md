@@ -1,7 +1,7 @@
 # TUNGAR-Guard
 
-Streamlit tabanlı, React kullanmayan tek sayfalık bir uygulama. Sohbet ve
-video analiz aynı akışta; sol tarafta ChatGPT tarzı geçmiş sohbet listesi,
+Streamlit tabanlı, tek sayfalık bir uygulama. Sohbet ve
+video analiz aynı akışta; sol tarafta chatbot tarzı geçmiş sohbet listesi,
 üstte KPI özeti. Video analiz **TEKNOFEST EVREN çıkarım servisi**
 (`evren-llmapi.ssyz.org.tr`) ile çalışır, otomasyon/KPI tarafı gerçek
 SQLite ile.
@@ -17,7 +17,7 @@ pip install -r requirements.txt
 ## EVREN API anahtarınızı girin
 
 ```bash
-export EVREN_API_KEY="sk-evren-teamNN-XXXXXXXX"   # size e-posta ile iletilen anahtar
+export EVREN_API_KEY="sk-evren-teamNN-XXXXXXXX"
 ```
 
 Bu kadar — `config.py` içindeki `EVREN_BASE_URL` ve `EVREN_MODEL`
