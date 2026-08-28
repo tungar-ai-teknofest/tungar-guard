@@ -1,0 +1,13 @@
+[server]
+maxUploadSize = 2000
+
+[theme]
+base = "dark"
+primaryColor = "#F5A524"
+backgroundColor = "#0B0F14"
+secondaryBackgroundColor = "#121821"
+textColor = "#E6EDF3"
+font = "sans serif"
+
+[client]
+toolbarMode = "minimal"
