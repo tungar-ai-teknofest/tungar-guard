@@ -1,0 +1,12 @@
+streamlit>=1.38
+pandas>=2.0
+opencv-python-headless>=4.9
+numpy>=1.26
+ultralytics>=8.3
+pydantic>=2.6
+openai>=1.40
+
+# Yerel model modu için (TUNGAR_USE_LOCAL_MODEL=1), opsiyonel:
+# torch
+# transformers>=4.57
+# accelerate
